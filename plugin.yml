@@ -1,0 +1,9 @@
+name: AshMan
+author: zzz
+main: net.mcbbs.zzz1999.AshMan.Main
+version: "1.0.0"
+api: 1.0.0
+
+permissions:
+ AshMan.Commands.clean:
+  default: op
