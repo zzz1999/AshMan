@@ -12,7 +12,7 @@ public class CommandListener extends Command {
 
     private Main plugin;
 
-    CommandListener(Main plugin) {
+    public CommandListener(Main plugin) {
         super("ashman","清理服务器掉落物与生物的命令","/ashman <clean> [world...]",new String[]{
                 "am"
         });
@@ -24,7 +24,7 @@ public class CommandListener extends Command {
         });
         this.commandParameters.put("default2",new CommandParameter[]{
                 new CommandParameter("clean",new String[]{"clean"}),
-                new CommandParameter("world...",CommandParameter.ARG_TYPE_RAW_TEXT),
+                new CommandParameter("world...",true),
         });
 
 
