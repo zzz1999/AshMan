@@ -6,17 +6,13 @@ import cn.nukkit.entity.Entity;
 import cn.nukkit.entity.EntityCreature;
 import cn.nukkit.entity.EntityHuman;
 import cn.nukkit.entity.item.EntityItem;
-import cn.nukkit.event.Listener;
 import cn.nukkit.level.Level;
 import cn.nukkit.math.AxisAlignedBB;
 import cn.nukkit.plugin.PluginBase;
 import cn.nukkit.utils.Config;
 import cn.nukkit.utils.TextFormat;
 import java.io.File;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.LinkedHashMap;
-import java.util.Map;
+import java.util.*;
 
 public class Main extends PluginBase{
 
@@ -68,7 +64,7 @@ public class Main extends PluginBase{
         Server.getInstance().broadcastMessage(TextFormat.GOLD+"[服务器清理] 本次清理总共清理掉了"+d+"个掉落物");
 
     }
-    public void clean(ArrayList<Level> list){
+    public void clean(Collection<Level> list){
         Integer i = 0;
         Integer d = 0;
             for (Level level : list) {
@@ -87,19 +83,19 @@ public class Main extends PluginBase{
         Server.getInstance().broadcastMessage(TextFormat.GOLD+"[服务器清理] 本次清理总共清理掉了"+d+"个掉落物");
     }
 
-    public Integer getMaxEntitiesNumber(){
+    public int getMaxEntitiesNumber(){
         return this.config.getInt("EntitiesNumber");
     }
-    public Integer getLowestTPS(){
+    public int getLowestTPS(){
         return this.config.getInt("TPS");
     }
-    public Integer getCleanPeriod(){
+    public int getCleanPeriod(){
         return this.config.getInt("CleanPeriod");
     }
     public void putExemptedEntity(Entity entity){
         this.exemptedEntities.put(entity.getId(),entity);
     }
-    public Boolean delExemptedEntity(Entity entity){
+    public boolean delExemptedEntity(Entity entity){
         return this.exemptedEntities.remove(entity.getId(),entity);
     }
 

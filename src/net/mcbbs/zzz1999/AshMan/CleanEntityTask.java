@@ -5,6 +5,7 @@ import cn.nukkit.level.Level;
 import cn.nukkit.scheduler.PluginTask;
 import cn.nukkit.utils.TextFormat;
 
+import java.util.ArrayList;
 import java.util.Map;
 
 public class CleanEntityTask extends PluginTask<Main> {
@@ -19,12 +20,16 @@ public class CleanEntityTask extends PluginTask<Main> {
     @Override
     public void onRun(int i) {
         Map<Integer, Level> Levels = plugin.getServer().getLevels();
-        Integer TotalEntities = 0;
+        int TotalEntities = 0;
         for(Level value : Levels.values()){
             TotalEntities+=value.getEntities().length;
         }
 
         if(TotalEntities >= plugin.getMaxEntitiesNumber() || plugin.getServer().getTicksPerSecond() < plugin.getLowestTPS()){//清理
+            if(plugin.getServer().getTicksPerSecond() <= 12){
+                plugin.clean(plugin.getServer().getLevels().values());
+                return;
+            }
             //plugin.clean();
             plugin.getServer().getScheduler().scheduleDelayedTask(new Countdown20Task(this.plugin),10*20);
             Server.getInstance().broadcastMessage(TextFormat.ITALIC+""+TextFormat.GOLD+"[服务器清理] 将在20秒钟之后清理掉多余的生物和掉落物");
