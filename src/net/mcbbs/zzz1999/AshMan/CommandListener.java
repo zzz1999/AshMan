@@ -59,7 +59,7 @@ public class CommandListener extends Command {
             plugin.clean(needClean);
             return true;
         }else{
-            sender.sendMessage(TextFormat.YELLOW+"[服务器清理] 用法:"+this.getUsage());
+            plugin.clean(plugin.getServer().getLevels().values());
         }
         return false;
     }

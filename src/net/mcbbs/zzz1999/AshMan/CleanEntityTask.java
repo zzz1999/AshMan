@@ -31,7 +31,7 @@ public class CleanEntityTask extends PluginTask<Main> {
             }
             //plugin.clean();
             plugin.getServer().getScheduler().scheduleDelayedTask(new Countdown20Task(this.plugin),10*20);
-            Server.getInstance().broadcastMessage(TextFormat.ITALIC+""+TextFormat.YELLOW+"[服务器清理] 将在20秒钟之后清理掉多余的生物和掉落物");
+            Server.getInstance().broadcastMessage(TextFormat.ITALIC+""+TextFormat.YELLOW+"[服务器清理] 将在20秒钟之后清理掉多余的生物");
         }
 
     }
